@@ -5,7 +5,7 @@ const apiFacade = () => {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNTQ2NDZlMWIwNDAwMzdmZTdhNmRjNmFhNjk3YzczOCIsInN1YiI6IjY1NzZlMjlkZTkzZTk1MjE5MmNjMWQ5OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EkNKXaCzAG8WADw4ELkDUbP6Mo9AvtCbdpMatZLEJOg'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NTA4NDE1YTNlZmQyMmI3N2VkNmM3ODc0MzI1MDJlYiIsInN1YiI6IjY1MGI1NDJmY2FkYjZiMDBhYmM2YjY3NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3bgpWgIBh-7eCFlLg-QJ1Kh4uvvYBOpTaoQlplWCQdg'
         }
     };
 
