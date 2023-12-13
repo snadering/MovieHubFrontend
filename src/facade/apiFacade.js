@@ -22,7 +22,6 @@ const apiFacade = () => {
     }
     try {
       const response = await axios.request(options)
-      console.log("Server Response:", response.data);
       return response.data;
     } catch (error){
       console.error(error);

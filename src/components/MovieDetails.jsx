@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import getApiFacade from "../facade/apiFacade";
+import { Audio } from "react-loader-spinner";
 
 const MovieDetails = () => {
-
   const { id } = useParams();
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState({});
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -16,25 +16,51 @@ const MovieDetails = () => {
         console.error("Error fetching movies:", error);
       }
     };
-    
+
     fetchMovies();
   }, [id]);
 
   return (
     <>
       <h1>MovieDetails</h1>
-      <div className="container mx-auto p-8">
-      <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md border border-black">
-        <div className="p-4">
-          <h1 className="text-2xl font-semibold mb-2">{movie.title}</h1>
-          <p className="text-gray-600"><strong>ID:</strong> {movie.id}</p>
-          <p className="text-gray-600"><strong>Release Date:</strong> {movie.release_date}</p>
-          <p className="text-gray-600"><strong>Overview:</strong> {movie.overview}</p>
-          <p className="text-gray-600"><strong>Popularity:</strong> {movie.popularity}</p>
-          <p className="text-gray-600"><strong>Vote Average:</strong> {movie.vote_average}</p>
+      {Object.keys(movie).length === 0 ? (
+        <div className="flex justify-center w-full">
+          <Audio
+            height="200"
+            width="200"
+            radius="9"
+            color="orange"
+            ariaLabel="loading"
+            wrapperStyle
+            wrapperClass
+          />
         </div>
-      </div>
-    </div>
+      ) : (
+        <>
+          <div className="container mx-auto p-8">
+            <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md border border-black">
+              <div className="p-4">
+                <h1 className="text-2xl font-semibold mb-2">{movie.title}</h1>
+                <p className="text-gray-600">
+                  <strong>ID:</strong> {movie.id}
+                </p>
+                <p className="text-gray-600">
+                  <strong>Release Date:</strong> {movie.release_date}
+                </p>
+                <p className="text-gray-600">
+                  <strong>Overview:</strong> {movie.overview}
+                </p>
+                <p className="text-gray-600">
+                  <strong>Popularity:</strong> {movie.popularity}
+                </p>
+                <p className="text-gray-600">
+                  <strong>Vote Average:</strong> {movie.vote_average}
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
