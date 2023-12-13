@@ -30,8 +30,8 @@ const MovieList = () => {
             radius="9"
             color="orange"
             ariaLabel="loading"
-            wrapperStyle
-            wrapperClass
+            wrapperStyle=""
+            wrapperClass=""
           />
         </div>
       ) : (

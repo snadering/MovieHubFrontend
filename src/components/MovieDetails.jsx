@@ -22,7 +22,9 @@ const MovieDetails = () => {
 
   return (
     <>
-      <h1>MovieDetails</h1>
+    <div className="flex justify-center p-4">
+      <h1 className="text-4xl">Movie Details</h1>
+    </div>
       {Object.keys(movie).length === 0 ? (
         <div className="flex justify-center w-full">
           <Audio
@@ -31,8 +33,8 @@ const MovieDetails = () => {
             radius="9"
             color="orange"
             ariaLabel="loading"
-            wrapperStyle
-            wrapperClass
+            wrapperStyle=""
+            wrapperClass=""
           />
         </div>
       ) : (
@@ -41,9 +43,8 @@ const MovieDetails = () => {
             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md border border-black">
               <div className="p-4">
                 <h1 className="text-2xl font-semibold mb-2">{movie.title}</h1>
-                <p className="text-gray-600">
-                  <strong>ID:</strong> {movie.id}
-                </p>
+                <hr className="m-2"/>
+                <p className="text-gray-600 opacity-50">#{movie.id}</p>
                 <p className="text-gray-600">
                   <strong>Release Date:</strong> {movie.release_date}
                 </p>
@@ -51,10 +52,10 @@ const MovieDetails = () => {
                   <strong>Overview:</strong> {movie.overview}
                 </p>
                 <p className="text-gray-600">
-                  <strong>Popularity:</strong> {movie.popularity}
+                  <strong>Rating:</strong> {movie.vote_average.toFixed(1)}
                 </p>
                 <p className="text-gray-600">
-                  <strong>Vote Average:</strong> {movie.vote_average}
+                  <strong>Votes:</strong> {movie.popularity.toFixed(0)}
                 </p>
               </div>
             </div>
