@@ -5,7 +5,7 @@ import dbFacade from "../facade/dbFacade";
 const Navbar = () => {
   const isLoggedIn = () => {
     const token = dbFacade().getToken();
-    return token != null;
+    return token !== undefined;
   };
 
   return (
@@ -21,24 +21,26 @@ const Navbar = () => {
             Top Movies
           </NavLink>
         </li>
-        <li>
           {isLoggedIn() ? (
+            <li>
             <NavLink to="/logout" activeclassname="font-bold">
               Logout
             </NavLink>
+            </li>
           ) : (
+            <>
+            <li>
             <NavLink to="/login" activeclassname="font-bold">
               Login
             </NavLink>
+            </li>
+            <li>
+            <NavLink to="/signup" activeclassname="font-bold">
+              Signup
+            </NavLink>
+          </li>
+          </>
           )}
-        </li>
-        {!isLoggedIn() && (
-        <li>
-          <NavLink to="/signup" activeclassname="font-bold">
-            Signup
-          </NavLink>
-        </li>
-        )}
       </ul>
     </nav>
   );
