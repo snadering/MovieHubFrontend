@@ -3,19 +3,18 @@ import Navbar from "./components/Navbar"
 import dbFacade from "./facade/dbFacade"
 import { useEffect } from "react";
 
+const publicPaths = [
+  '/',
+  '/login',
+  '/signup',
+]
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
     const token = dbFacade().getToken();
-    if (
-      !token &&
-      (location.pathname != "/" &&
-        location.pathname != "/login" &&
-        location.pathname != "/signup")
-    ) {
-      console.log(token);
+    if (!token && !publicPaths.includes(location.pathname)) {
       navigate("/login");
     }
   }, [location.pathname]);
