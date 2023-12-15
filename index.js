@@ -31,5 +31,23 @@ app.get('/movies', (req, res) => {
    
 })
 
+app.get('/movies/:id', (req, res) => {
+    const options = {
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/${req.params.id}?language=en-US`,
+        headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${API_KEY}`
+        }
+    };
+
+    axios.request(options)
+        .then((response) => {
+            res.json(response.data)
+        }).catch((error) => {
+            console.error(error)
+        })
+})
+
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
