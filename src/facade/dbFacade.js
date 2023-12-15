@@ -32,10 +32,15 @@ export default function dbFacade() {
     localStorage.setItem("jwtToken", token);
   }
 
+  const getToken = () => {
+    localStorage.getItem("jwtToken")
+  }
+
   return {
     getUser,
     login,
     register,
     setToken,
+    getToken,
   }
 }
