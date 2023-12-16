@@ -12,12 +12,22 @@ function SearchBar({ setMovies }) {
       const search = async () => {
         const movies = await getApiFacade.searchMoviesByName(query);
         setMovies(movies);
-      }
+      };
+      const fetchAll = async () => {
+        try {
+          const movieData = await getApiFacade.getAllMovies();
+          setMovies(movieData.results || []);
+        } catch (error) {
+          console.error("Error fetching movies:", error);
+        }
+      };
 
       if (query != "") {
         search();
+      } else {
+        fetchAll();
       }
-    }, [query])
+    }, [query]);
 
     return ( 
         <div className="w-full max-w-[768px] mx-auto relative">
