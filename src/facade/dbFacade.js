@@ -1,3 +1,5 @@
+const baseUrl = "https://movie-hub-api.tobiasthedanish.dk/api/v1"
+
 export default function dbFacade() {
   const getUser = (form) => {
     return {
@@ -7,7 +9,7 @@ export default function dbFacade() {
   }
 
   const login = async (user) => {
-    return await fetch("http://localhost:7070/api/v1/auth/login", {
+    return await fetch(baseUrl + "/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +20,7 @@ export default function dbFacade() {
   };
 
   const register = async (user) => {
-    return await fetch("http://localhost:7070/api/v1/auth/register", {
+    return await fetch(baseUrl + "/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
