@@ -5,19 +5,9 @@ import { Link } from "react-router-dom";
 import { Audio } from "react-loader-spinner";
 import SearchBar from "./SearchBar";
 
-const MovieList = () => {
+const MovieList = ({ baseUrl, backdropSize }) => {
   const [movies, setMovies] = useState([]);
-  const [baseUrl, setBaseUrl] = useState();
-  const [backdropSizes, setBackdropSizes] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const imageData = await getApiFacade.getMovieImages();
-      setBaseUrl(imageData.secure_base_url);
-      setBackdropSizes(imageData.backdrop_sizes);
-    }
-    fetchData();
-  }, []);
+  
 
 
 
@@ -41,7 +31,7 @@ const MovieList = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {movies.map((movie, index) => (
               <Link to={`/movies/${movie.id}`} key={movie.id}>
-                <MovieCard {...movie} baseUrl={baseUrl} backdropSize={backdropSizes[0]} />
+                <MovieCard {...movie} baseUrl={baseUrl} backdropSize={backdropSize} />
               </Link>
             ))}
           </div>
