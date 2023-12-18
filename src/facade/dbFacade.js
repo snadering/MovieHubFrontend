@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const baseUrl = "https://movie-hub-api.tobiasthedanish.dk/api/v1"
 
 export default function dbFacade() {

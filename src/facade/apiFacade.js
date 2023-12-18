@@ -3,6 +3,7 @@ import dbFacade from "./dbFacade";
 
 const apiFacade = () => {
   const baseUrl = "https://movie-hub-api.tobiasthedanish.dk/api/v1"
+
   
   const getAllMovies = async () => {
     const options = {
