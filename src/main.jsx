@@ -12,6 +12,7 @@ import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 import MovieList from "./components/MovieList.jsx";
 import MovieDetails from "./components/MovieDetails.jsx";
+import Logout from "./components/Logout.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       {/* login / signup */}
       <Route path="login/" element={<Login />} />
       <Route path="signup/" element={<Signup />} />
+      <Route path="logout/" element={<Logout />} />
 
       {/* Get all movies */}
       <Route path="movies/" element={<MovieList />} />
