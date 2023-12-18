@@ -22,7 +22,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex gap-2 flex-col p-4 rounded border-neutral-800/75 border w-fit">
+    <div className="flex gap-2 flex-col p-4 rounded border-neutral-800/75 border w-fit mx-auto my-10">
       <div className="flex gap-2 flex-col p-2 border-b border-neutral-800/40">
         <h2 className="font-bold text-4xl">Login</h2>
         <p className="text-md text-neutral-900/75">

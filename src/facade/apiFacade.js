@@ -1,11 +1,17 @@
 import axios from "axios";
+import dbFacade from "./dbFacade";
 
 const apiFacade = () => {
+  const baseUrl = "https://movie-hub-api.tobiasthedanish.dk/api/v1"
   
   const getAllMovies = async () => {
     const options = {
       method: "GET",
-      url: "http://localhost:8000/movies",
+      url: `${baseUrl}/movies`,
+      headers: {
+        "accept": "application/json",
+        "Authorization": `Bearer ${dbFacade().getToken()}`,
+      },
     };
     try {
       const response = await axios.request(options);
@@ -18,7 +24,11 @@ const apiFacade = () => {
   const getMovieById = async (movieId) => {
     const options = {
       method: "GET",
-      url: `http://localhost:8000/movies/${movieId}`
+      url: `${baseUrl}/movies/${movieId}`,
+      headers: {
+        "accept": "application/json",
+        "Authorization": `Bearer ${dbFacade().getToken()}`,
+      },
     }
     try {
       const response = await axios.request(options)
@@ -31,7 +41,11 @@ const apiFacade = () => {
   const searchMoviesByName = async (query) => {
     const options = {
       method: "GET",
-      url: `http://localhost:8000/search/movies?query=${query}`,
+      url: `${baseUrl}/movies/search?query=${query}`,
+      headers: {
+        "accept": "application/json",
+        "Authorization": `Bearer ${dbFacade().getToken()}`,
+      },
     };
     try {
       const response = await axios.request(options);
