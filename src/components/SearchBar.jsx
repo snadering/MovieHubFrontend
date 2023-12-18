@@ -22,6 +22,7 @@ function SearchBar({ setMovies }) {
         }
       };
 
+      //Fetch all movies if query is empty
       if (query != "") {
         search();
       } else {

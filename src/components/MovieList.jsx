@@ -7,19 +7,19 @@ import SearchBar from "./SearchBar";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
+  const [baseUrl, setBaseUrl] = useState();
+  const [backdropSizes, setBackdropSizes] = useState([]);
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const movieData = await getApiFacade.getAllMovies();
-        setMovies(movieData.results || []);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-      }
-    };
-
-    fetchMovies();
+    const fetchData = async () => {
+      const imageData = await getApiFacade.getMovieImages();
+      setBaseUrl(imageData.secure_base_url);
+      setBackdropSizes(imageData.backdrop_sizes);
+    }
+    fetchData();
   }, []);
+
+
 
   return (
     <>
@@ -41,7 +41,7 @@ const MovieList = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {movies.map((movie, index) => (
               <Link to={`/movies/${movie.id}`} key={movie.id}>
-                <MovieCard {...movie} />
+                <MovieCard {...movie} baseUrl={baseUrl} backdropSize={backdropSizes[0]} />
               </Link>
             ))}
           </div>
