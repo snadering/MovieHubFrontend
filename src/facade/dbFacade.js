@@ -33,7 +33,7 @@ export default function dbFacade() {
   }
 
   const getToken = () => {
-    localStorage.getItem("jwtToken")
+    return localStorage.getItem("jwtToken");
   }
 
   return {
