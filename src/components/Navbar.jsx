@@ -5,7 +5,7 @@ import dbFacade from "../facade/dbFacade";
 const Navbar = () => {
   const isLoggedIn = () => {
     const token = dbFacade().getToken();
-    return token !== undefined;
+    return token != null;
   };
 
   return (

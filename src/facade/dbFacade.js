@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const baseUrl = "https://movie-hub-api.tobiasthedanish.dk/api/v1"
 
 export default function dbFacade() {
@@ -30,6 +32,10 @@ export default function dbFacade() {
     }).then((res) => res.json());
   };
 
+  const logout = async (token) => {
+    localStorage.removeItem("jwtToken");
+  };
+
   const setToken = (token) => {
     localStorage.setItem("jwtToken", token);
   }
@@ -42,6 +48,7 @@ export default function dbFacade() {
     getUser,
     login,
     register,
+    logout,
     setToken,
     getToken,
   }
