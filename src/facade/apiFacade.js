@@ -55,10 +55,30 @@ const apiFacade = () => {
     }
   };
 
+  const submitUserRating = async (movieId, rating) => {
+    const options = {
+      method: "POST",
+      url: `${baseUrl}/movies/${movieId}/ratings`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${dbFacade().getToken()}`,
+      },
+      data: { rating: rating },
+    };
+
+    try {
+      const response = await axios.request(options);
+      return response.data.results;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     getAllMovies,
     getMovieById,
     searchMoviesByName,
+    submitUserRating,
   };
 };
 

@@ -7,6 +7,21 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
 
+  const [userRating, setUserRating] = useState(0)
+
+  const handleRatingChange = (e) => {
+    setUserRating(Number(e.target.value))
+  }
+
+  const handleRatingSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      await getApiFacade.submitUserRating(id, userRating)
+    } catch (error) {
+      console.log("Error submitting rating", error)
+    }
+  }
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -59,6 +74,30 @@ const MovieDetails = () => {
                 </p>
               </div>
             </div>
+          </div>
+          <div className="container mx-auto p-8">
+            <form onSubmit={handleRatingSubmit} className="flex flex-col items-center">
+              <label htmlFor="userRating" className="mb-2">
+                Your Rating:
+              </label>
+              <div className="flex items-center">
+                <input
+                  type="range"
+                  id="userRating"
+                  name="userRating"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  value={userRating}
+                  onChange={handleRatingChange}
+                  className="w-64"
+                />
+                <span className="ml-2">{userRating.toFixed(1)}</span>
+              </div>
+              <button type="submit" className="mt-4 border rounded px-4 py-2 border-neutral-900 cursor-pointer">
+                Submit Rating
+              </button>
+            </form>
           </div>
         </>
       )}
