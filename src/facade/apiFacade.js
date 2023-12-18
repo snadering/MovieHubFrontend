@@ -55,22 +55,41 @@ const apiFacade = () => {
     }
   };
 
-  const submitUserRating = async (movieId, rating) => {
+  const getUserRating = async (movieId) => {
     const options = {
-      method: "POST",
-      url: `${baseUrl}/movies/${movieId}/ratings`,
+      method: "GET",
+      url: `${baseUrl}/movies/${movieId}/rating`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${dbFacade().getToken()}`,
       },
-      data: { rating: rating },
     };
 
     try {
       const response = await axios.request(options);
-      return response.data.results;
+
+      return response.data.rating;
     } catch (error) {
-      console.error(error);
+      return 0;
+    }
+  }
+
+  const submitUserRating = async (movieId, rating) => {
+    const options = {
+      method: "POST",
+      url: `${baseUrl}/movies/${movieId}/rating`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${dbFacade().getToken()}`,
+      },
+      data: JSON.stringify({ rating: rating }),
+    };
+
+    try {
+      const response = await axios.request(options);
+      return response.status == 201;
+    } catch (error) {
+      return false;
     }
   };
 
@@ -78,6 +97,7 @@ const apiFacade = () => {
     getAllMovies,
     getMovieById,
     searchMoviesByName,
+    getUserRating,
     submitUserRating,
   };
 };
