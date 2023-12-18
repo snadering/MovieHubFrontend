@@ -7,7 +7,8 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
 
-  const [userRating, setUserRating] = useState(0)
+  const [userRating, setUserRating] = useState()
+  const [ratingMsg, setRatingMsg] = useState(undefined);
 
   const handleRatingChange = (e) => {
     setUserRating(Number(e.target.value))
@@ -16,9 +17,14 @@ const MovieDetails = () => {
   const handleRatingSubmit = async (e) => {
     e.preventDefault()
     try {
-      await getApiFacade.submitUserRating(id, userRating)
+      const ratingSet = await getApiFacade.submitUserRating(id, userRating);
+      if (ratingSet) {
+        setRatingMsg("Rating has been set!");
+      } else {
+        setRatingMsg("Could not set rating.");
+      }
     } catch (error) {
-      console.log("Error submitting rating", error)
+      setRatingMsg("Error submitting rating", error);
     }
   }
 
@@ -27,6 +33,8 @@ const MovieDetails = () => {
       try {
         const movieData = await getApiFacade.getMovieById(id);
         setMovie(movieData || {});
+        const rating = await getApiFacade.getUserRating(id);
+        setUserRating(rating || 0);
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
@@ -75,8 +83,11 @@ const MovieDetails = () => {
               </div>
             </div>
           </div>
+
+        {userRating != undefined && 
           <div className="container mx-auto p-8">
             <form onSubmit={handleRatingSubmit} className="flex flex-col items-center">
+              {ratingMsg && <h3>{ratingMsg}</h3>}
               <label htmlFor="userRating" className="mb-2">
                 Your Rating:
               </label>
@@ -99,6 +110,7 @@ const MovieDetails = () => {
               </button>
             </form>
           </div>
+        }
         </>
       )}
     </>
