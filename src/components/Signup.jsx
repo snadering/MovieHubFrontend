@@ -10,7 +10,7 @@ const Signup = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     const user = getUser(e.target);
-    user["role"] = "user";
+    user["role"] = "admin";
 
     const data = await register(user);
 
