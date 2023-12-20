@@ -58,7 +58,7 @@ const apiFacade = () => {
   const getUserRating = async (movieId) => {
     const options = {
       method: "GET",
-      url: `${baseUrl}/movies/${movieId}/rating`,
+      url: `${BASE_URL}/movies/${movieId}/rating`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${dbFacade().getToken()}`,
@@ -77,7 +77,7 @@ const apiFacade = () => {
   const submitUserRating = async (movieId, rating) => {
     const options = {
       method: "POST",
-      url: `${baseUrl}/movies/${movieId}/rating`,
+      url: `${BASE_URL}/movies/${movieId}/rating`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${dbFacade().getToken()}`,
