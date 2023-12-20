@@ -13,6 +13,20 @@ import Signup from "./components/Signup.jsx";
 import MovieList from "./components/MovieList.jsx";
 import MovieDetails from "./components/MovieDetails.jsx";
 import Logout from "./components/Logout.jsx";
+import getApiFacade from "./facade/apiFacade";
+
+let baseUrl = "";
+let backdropSizes = [];
+
+
+    const fetchData = async () => {
+      const imageData = await getApiFacade.getMovieImages();
+      baseUrl = imageData.secure_base_url;
+      backdropSizes = imageData.backdrop_sizes;
+    }
+   await fetchData();
+
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,8 +39,8 @@ const router = createBrowserRouter(
       <Route path="logout/" element={<Logout />} />
 
       {/* Get all movies */}
-      <Route path="movies/" element={<MovieList />} />
-      <Route path="movies/:id/" element={<MovieDetails />} />
+      <Route path="movies/" element={<MovieList baseUrl={baseUrl} backdropSize={backdropSizes[0]}/>} />
+      <Route path="movies/:id/" element={<MovieDetails baseUrl={baseUrl} backdropSize={backdropSizes[2]}/>} />
 
       {/* Top 10 movies */}
       <Route path="top/" element={<MovieList />} />

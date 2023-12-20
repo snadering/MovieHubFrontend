@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import getApiFacade from "../facade/apiFacade";
 import { Audio } from "react-loader-spinner";
 
-const MovieDetails = () => {
+const MovieDetails = ({ baseUrl, backdropSize }) => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
 
@@ -43,6 +43,7 @@ const MovieDetails = () => {
             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md border border-black">
               <div className="p-4">
                 <h1 className="text-2xl font-semibold mb-2">{movie.title}</h1>
+                <img src={`${baseUrl}${backdropSize}${movie.backdrop_path}`} alt="" />
                 <hr className="m-2"/>
                 <p className="text-gray-600 opacity-50">#{movie.id}</p>
                 <p className="text-gray-600">
