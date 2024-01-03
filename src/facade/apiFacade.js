@@ -4,10 +4,10 @@ import dbFacade from "./dbFacade";
 const apiFacade = () => {
   const BASE_URL = "https://movie-hub-api.tobiasthedanish.dk/api/v1"
   
-  const getAllMovies = async () => {
+  const getAllMovies = async (pageNumber = 1) => {
     const options = {
       method: "GET",
-      url: `${BASE_URL}/movies`,
+      url: `${BASE_URL}/movies/page/${pageNumber}`,
       headers: {
         "accept": "application/json",
         "Authorization": `Bearer ${dbFacade().getToken()}`,
