@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import getApiFacade from "../facade/apiFacade";
 
-function SearchBar({ setMovies }) {
+function SearchBar({ setMovies, page }) {
     const [query, setQuery] = useState("");
 
     const onChangeHandle = (e) => {
@@ -15,7 +15,7 @@ function SearchBar({ setMovies }) {
       };
       const fetchAll = async () => {
         try {
-          const movieData = await getApiFacade.getAllMovies();
+          const movieData = await getApiFacade.getAllMovies(page);
           setMovies(movieData.results || []);
         } catch (error) {
           console.error("Error fetching movies:", error);
@@ -28,7 +28,7 @@ function SearchBar({ setMovies }) {
       } else {
         fetchAll();
       }
-    }, [query]);
+    }, [query, page]);
 
     return ( 
         <div className="w-full max-w-[768px] mx-auto relative">
