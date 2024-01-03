@@ -20,7 +20,8 @@ const MovieList = ({ baseUrl, backdropSize }) => {
   return (
     <>
       <div className="container mx-auto p-8 space-y-8">
-        <SearchBar setMovies={setMovies} />
+        <SearchBar setMovies={setMovies} page={pageNumber} />
+        <PaginationButtons pageNumber={pageNumber} totalPages={totalPages} handlePageChange={handlePageChange} />
         <MovieCardList movies={movies} baseUrl={baseUrl} backdropSize={backdropSize} />
       </div>
       <PaginationButtons pageNumber={pageNumber} totalPages={totalPages} handlePageChange={handlePageChange}/>
