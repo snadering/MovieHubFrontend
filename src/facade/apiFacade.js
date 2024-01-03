@@ -55,6 +55,30 @@ const apiFacade = () => {
     }
   };
 
+  /**
+   * 
+   * @returns {Promise<any[]>}
+   */
+  const getAllRatings = async () => {
+    const options = {
+      method: "GET",
+      url: `${BASE_URL}/user/ratings`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${dbFacade().getToken()}`,
+      },
+    }
+
+    try {
+      const response = await axios.request(options);
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
   const getUserRating = async (movieId) => {
     const options = {
       method: "GET",
@@ -113,6 +137,7 @@ const apiFacade = () => {
     getAllMovies,
     getMovieById,
     searchMoviesByName,
+    getAllRatings,
     getUserRating,
     submitUserRating,
     getMovieImages,

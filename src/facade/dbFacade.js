@@ -1,5 +1,3 @@
-import getApiFacade from "./apiFacade";
-
 const BASE_URL = "https://movie-hub-api.tobiasthedanish.dk/api/v1"
 
 export default function dbFacade() {
