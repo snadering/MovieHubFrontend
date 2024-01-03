@@ -19,6 +19,11 @@ const Navbar = ({ loggedIn }) => {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/rated" activeclassname="font-bold">
+                Rated Movies
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/logout" activeclassname="font-bold">
                 Logout
               </NavLink>

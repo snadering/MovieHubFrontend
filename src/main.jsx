@@ -15,6 +15,7 @@ import MovieDetails from "./components/MovieDetails.jsx";
 import Logout from "./components/Logout.jsx";
 import getApiFacade from "./facade/apiFacade";
 import dbFacade from "./facade/dbFacade.js";
+import RatedMovieList from "./components/RatedMovieList.jsx";
 
 let baseUrl = "";
 let backdropSizes = [];
@@ -48,7 +49,18 @@ const router = createBrowserRouter(
       />
 
       {/* Top 10 movies */}
-      <Route path="top/" element={<MovieList baseUrl={baseUrl} backdropSize={backdropSizes[0]}/>} />
+      <Route
+        path="top/"
+        element={
+          <MovieList baseUrl={baseUrl} backdropSize={backdropSizes[0]} />
+        }
+      />
+      <Route
+        path="rated/"
+        element={
+          <RatedMovieList baseUrl={baseUrl} backdropSize={backdropSizes[0]} />
+        }
+      />
     </Route>
   )
 );
