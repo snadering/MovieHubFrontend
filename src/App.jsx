@@ -27,6 +27,7 @@ function App() {
     <>
       <Navbar loggedIn={loggedIn}/>
       <Outlet />
+      {location.pathname === '/' && <img src="./src/assets/MovieHubLogoLg.png" alt="MoveHubLogo"/>}
     </>
   );
 }

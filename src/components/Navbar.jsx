@@ -14,11 +14,6 @@ const Navbar = ({ loggedIn }) => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/top" activeclassname="font-bold">
-                Top Movies
-              </NavLink>
-            </li>
-            <li>
               <NavLink to="/rated" activeclassname="font-bold">
                 Rated Movies
               </NavLink>
