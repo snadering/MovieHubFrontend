@@ -13,8 +13,6 @@ function RatedMovieList({ baseUrl, backdropSize }) {
           return b.rating - a.rating;
         })
 
-        console.log("res after sort: ", res);
-
         const movies = [];
         for (let i = 0; i < res.length; i++) {
           const value = res[i];
