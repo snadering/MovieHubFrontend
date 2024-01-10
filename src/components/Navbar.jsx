@@ -4,27 +4,25 @@ import { NavLink } from "react-router-dom";
 const Navbar = ({ loggedIn }) => {
 
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-gray-800 p-4 flex justify-between">
+      <NavLink to="/">
+        <img src="./src/assets/MovieHubLogoNav.png" alt="MoveHubLogo-NavBar" width="100" />
+      </NavLink>
       <ul className="flex justify-end space-x-4 text-white">
         {loggedIn ? (
           <>
             <li>
-              <NavLink to="/movies" activeclassname="font-bold">
+              <NavLink to="/movies" >
                 All Movies
               </NavLink>
             </li>
             <li>
-              <NavLink to="/top" activeclassname="font-bold">
-                Top Movies
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/rated" activeclassname="font-bold">
+              <NavLink to="/rated">
                 Rated Movies
               </NavLink>
             </li>
             <li>
-              <NavLink to="/logout" activeclassname="font-bold">
+              <NavLink to="/logout">
                 Logout
               </NavLink>
             </li>

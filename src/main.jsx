@@ -47,14 +47,6 @@ const router = createBrowserRouter(
           <MovieDetails baseUrl={baseUrl} backdropSize={backdropSizes[2]} />
         }
       />
-
-      {/* Top 10 movies */}
-      <Route
-        path="top/"
-        element={
-          <MovieList baseUrl={baseUrl} backdropSize={backdropSizes[0]} />
-        }
-      />
       <Route
         path="rated/"
         element={
