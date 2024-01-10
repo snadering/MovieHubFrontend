@@ -12,17 +12,17 @@ const Navbar = ({ loggedIn }) => {
         {loggedIn ? (
           <>
             <li>
-              <NavLink to="/movies" activeclassname="font-bold">
+              <NavLink to="/movies" >
                 All Movies
               </NavLink>
             </li>
             <li>
-              <NavLink to="/rated" activeclassname="font-bold">
+              <NavLink to="/rated">
                 Rated Movies
               </NavLink>
             </li>
             <li>
-              <NavLink to="/logout" activeclassname="font-bold">
+              <NavLink to="/logout">
                 Logout
               </NavLink>
             </li>
