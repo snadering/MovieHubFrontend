@@ -22,4 +22,4 @@ RUN npm install -g serve
 # Expose the port that your app is running on
 EXPOSE 3000
 
-CMD ["serve", "dist", "-l", "3000"]
+CMD ["serve", "dist", "-s", "-l", "3000"]
